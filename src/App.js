@@ -23,13 +23,23 @@ const firestore = firebase.firestore();
 const analytics = firebase.analytics();
 
 function App() {
+
+  const [user] = useAuthState(auth);
+
   return (
     <div className="App">
       <header>
-
+        <h1>ChatChannel</h1>
+        <SignOut />
       </header>
+
+      <section>
+        {user ? <ChatRoom /> : <SignIn />}
+      </section>
+
     </div>
   );
 }
+
 
 export default App;
